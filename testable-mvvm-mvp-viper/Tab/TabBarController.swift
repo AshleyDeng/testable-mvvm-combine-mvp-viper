@@ -12,8 +12,8 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         let mvvmNav = getNavController(MVVMViewController(), title: "MVVM", image: UIImage(systemName: "tram.tunnel.fill")!)
-        let mvpNav = getNavController(MVPViewController(), title: "MVP", image: UIImage(systemName: "tram.tunnel.fill")!)
-        let viperNav = getNavController(VIPERViewController(), title: "VIPER", image: UIImage(systemName: "tram.tunnel.fill")!)
+        let mvpNav = getNavController(MVPViewController(), title: "MVP", image: UIImage(systemName: "gamecontroller.fill")!)
+        let viperNav = getNavController(VIPERViewController(), title: "VIPER", image: UIImage(systemName: "bonjour")!)
         
         viewControllers = [mvvmNav, mvpNav, viperNav]
     }
