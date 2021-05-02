@@ -9,6 +9,16 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+class UserTableViewCell: UITableViewCell {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+}
+
 class MVVMViewController: UIViewController {
     
     private let usersViewModel = UsersViewModel()
@@ -17,7 +27,7 @@ class MVVMViewController: UIViewController {
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(
-            UITableViewCell.self,
+            UserTableViewCell.self,
             forCellReuseIdentifier: "cell"
         )
         return table
@@ -34,10 +44,10 @@ class MVVMViewController: UIViewController {
         usersViewModel.users.bind(
             to: tableView.rx.items(
                 cellIdentifier: "cell",
-                cellType: UITableViewCell.self)
+                cellType: UserTableViewCell.self)
         ) { row, model, cell in
             cell.textLabel?.text = model.name
-            cell.imageView?.image = UIImage(systemName: model.email)
+            cell.detailTextLabel?.text = model.email
         }.disposed(by: bag)
         
         tableView.rx.modelSelected(User.self).bind { user in
