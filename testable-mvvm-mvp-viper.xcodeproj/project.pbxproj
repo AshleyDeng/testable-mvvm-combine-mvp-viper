@@ -18,6 +18,8 @@
 		C9276624263B6F7100CC81AC /* testable_mvvm_mvp_viperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9276623263B6F7100CC81AC /* testable_mvvm_mvp_viperTests.swift */; };
 		C927662F263B6F7100CC81AC /* testable_mvvm_mvp_viperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C927662E263B6F7100CC81AC /* testable_mvvm_mvp_viperUITests.swift */; };
 		C995B5AE263CBE3200CAC797 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C995B5AD263CBE3200CAC797 /* TabBarController.swift */; };
+		C9DCB1EA263E3C010015CFE9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB1E9263E3C010015CFE9 /* User.swift */; };
+		C9DCB1EF263E43360015CFE9 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB1EE263E43360015CFE9 /* UsersViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		C927662E263B6F7100CC81AC /* testable_mvvm_mvp_viperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testable_mvvm_mvp_viperUITests.swift; sourceTree = "<group>"; };
 		C9276630263B6F7100CC81AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C995B5AD263CBE3200CAC797 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		C9DCB1E9263E3C010015CFE9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C9DCB1EE263E43360015CFE9 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		E58C9BB74A12BB7425164F34 /* Pods-testable-mvvm-mvp-viper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testable-mvvm-mvp-viper.release.xcconfig"; path = "Target Support Files/Pods-testable-mvvm-mvp-viper/Pods-testable-mvvm-mvp-viper.release.xcconfig"; sourceTree = "<group>"; };
 		EABFB782EC205BC2F105459D /* Pods-testable-mvvm-mvp-viperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testable-mvvm-mvp-viperTests.debug.xcconfig"; path = "Target Support Files/Pods-testable-mvvm-mvp-viperTests/Pods-testable-mvvm-mvp-viperTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,6 +212,7 @@
 		C995B5C0263E2F7F00CAC797 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C9DCB1EE263E43360015CFE9 /* UsersViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 		C995B5C1263E2F8B00CAC797 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C9DCB1E9263E3C010015CFE9 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -437,7 +443,9 @@
 				C9065920263B72B400761C64 /* VIPERViewController.swift in Sources */,
 				C995B5AE263CBE3200CAC797 /* TabBarController.swift in Sources */,
 				C927660D263B6F7000CC81AC /* AppDelegate.swift in Sources */,
+				C9DCB1EF263E43360015CFE9 /* UsersViewModel.swift in Sources */,
 				C927660F263B6F7000CC81AC /* SceneDelegate.swift in Sources */,
+				C9DCB1EA263E3C010015CFE9 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
