@@ -12,10 +12,11 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         let mvvmNav = getNavController(MVVMViewController(), title: "MVVM", image: UIImage(systemName: "tram.tunnel.fill")!)
+        let combineNav = getNavController(CombineViewController(), title: "Combine", image: UIImage(systemName: "arrow.triangle.merge")!)
         let mvpNav = getNavController(MVPViewController(), title: "MVP", image: UIImage(systemName: "gamecontroller.fill")!)
         let viperNav = getNavController(VIPERViewController(), title: "VIPER", image: UIImage(systemName: "bonjour")!)
         
-        viewControllers = [mvvmNav, mvpNav, viperNav]
+        viewControllers = [mvvmNav, combineNav, mvpNav, viperNav]
     }
     
     private func getNavController(_ viewController: UIViewController, title: String, image: UIImage) -> UINavigationController {
