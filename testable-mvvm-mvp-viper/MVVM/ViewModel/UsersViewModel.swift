@@ -20,15 +20,16 @@ class UsersViewModel {
     func fetchData() {
         userRepository
             .loadUsers()
-            .subscribe(
-                onNext: { response in
-                    switch response {
-                    case .success(let users):
-                        self.users.onNext(users)
-                    case .failure(let error):
-                        print(error)
-                    }
-                })
+            .subscribe(onNext: handleResponse(_:))
             .disposed(by: bag)
+    }
+    
+    private func handleResponse(_ response: UserRepoResponse) {
+        switch response {
+        case .success(let users):
+            self.users.onNext(users)
+        case .failure(let error):
+            print(error)
+        }
     }
 }

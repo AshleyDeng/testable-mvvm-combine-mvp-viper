@@ -9,16 +9,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class UserTableViewCell: UITableViewCell {
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError()
-    }
-}
-
 class MVVMViewController: UIViewController {
     private let usersViewModel = UsersViewModel(service: UserRepository())
     private let bag = DisposeBag()
