@@ -20,8 +20,7 @@ class UserTableViewCell: UITableViewCell {
 }
 
 class MVVMViewController: UIViewController {
-    
-    private let usersViewModel = UsersViewModel()
+    private let usersViewModel = UsersViewModel(service: UserRepository())
     private let bag = DisposeBag()
     
     private let tableView: UITableView = {
