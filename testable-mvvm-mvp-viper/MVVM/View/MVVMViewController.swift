@@ -11,7 +11,7 @@ import RxSwift
 import SVProgressHUD
 
 class MVVMViewController: UIViewController {
-    private let usersViewModel = UsersViewModel(service: UserRepository())
+    private let userViewModel = UserViewModel(service: UserRepository())
     private let bag = DisposeBag()
     
     private let tableView: UITableView = {
@@ -31,7 +31,7 @@ class MVVMViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        usersViewModel.users.bind(
+        userViewModel.users.bind(
             to: tableView.rx.items(
                 cellIdentifier: "cell",
                 cellType: UserTableViewCell.self)
@@ -40,7 +40,7 @@ class MVVMViewController: UIViewController {
             cell.detailTextLabel?.text = model.email
         }.disposed(by: bag)
         
-        usersViewModel.isLoading
+        userViewModel.isLoading
             .asDriver()
             .drive(onNext: { [weak self] isLoading in
                 self?.showLoading(isLoading: isLoading)
@@ -51,7 +51,7 @@ class MVVMViewController: UIViewController {
                 print(user.name)
             }.disposed(by: bag)
         
-        usersViewModel.fetchData()
+        userViewModel.fetchData()
     }
     
     private func showLoading(isLoading: Bool) {

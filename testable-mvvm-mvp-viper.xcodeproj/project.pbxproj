@@ -19,7 +19,7 @@
 		C927662F263B6F7100CC81AC /* testable_mvvm_mvp_viperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C927662E263B6F7100CC81AC /* testable_mvvm_mvp_viperUITests.swift */; };
 		C995B5AE263CBE3200CAC797 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C995B5AD263CBE3200CAC797 /* TabBarController.swift */; };
 		C9DCB1EA263E3C010015CFE9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB1E9263E3C010015CFE9 /* User.swift */; };
-		C9DCB1EF263E43360015CFE9 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB1EE263E43360015CFE9 /* UsersViewModel.swift */; };
+		C9DCB1EF263E43360015CFE9 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB1EE263E43360015CFE9 /* UserViewModel.swift */; };
 		C9DCB1F526407ED10015CFE9 /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB1F426407ED10015CFE9 /* CombineViewController.swift */; };
 		C9DCB20F2640A5530015CFE9 /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB20E2640A5530015CFE9 /* UserRepo.swift */; };
 		C9DCB21A2640B3200015CFE9 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB2192640B3200015CFE9 /* UserTableViewCell.swift */; };
@@ -64,7 +64,7 @@
 		C9276630263B6F7100CC81AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C995B5AD263CBE3200CAC797 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C9DCB1E9263E3C010015CFE9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		C9DCB1EE263E43360015CFE9 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		C9DCB1EE263E43360015CFE9 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		C9DCB1F426407ED10015CFE9 /* CombineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 		C9DCB20E2640A5530015CFE9 /* UserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepo.swift; sourceTree = "<group>"; };
 		C9DCB2192640B3200015CFE9 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 		C995B5C0263E2F7F00CAC797 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C9DCB1EE263E43360015CFE9 /* UsersViewModel.swift */,
+				C9DCB1EE263E43360015CFE9 /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -482,7 +482,7 @@
 				C9065920263B72B400761C64 /* VIPERViewController.swift in Sources */,
 				C995B5AE263CBE3200CAC797 /* TabBarController.swift in Sources */,
 				C927660D263B6F7000CC81AC /* AppDelegate.swift in Sources */,
-				C9DCB1EF263E43360015CFE9 /* UsersViewModel.swift in Sources */,
+				C9DCB1EF263E43360015CFE9 /* UserViewModel.swift in Sources */,
 				C927660F263B6F7000CC81AC /* SceneDelegate.swift in Sources */,
 				C9DCB1F526407ED10015CFE9 /* CombineViewController.swift in Sources */,
 				C9DCB1EA263E3C010015CFE9 /* User.swift in Sources */,
