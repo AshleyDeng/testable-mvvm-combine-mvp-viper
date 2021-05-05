@@ -11,7 +11,7 @@ import RxSwift
 import SVProgressHUD
 
 class MVVMViewController: UIViewController {
-    private let userViewModel = UserViewModel(service: UserRepository())
+    private let userViewModel = UserViewModel(service: UserRemoteRepo())
     private let bag = DisposeBag()
     
     private let tableView: UITableView = {

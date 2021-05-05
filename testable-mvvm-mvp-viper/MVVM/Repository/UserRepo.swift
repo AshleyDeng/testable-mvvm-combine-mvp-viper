@@ -8,6 +8,7 @@
 import RxSwift
 
 enum UserRepoError: Error {
+    case noLocalData
     case urlError
     case networkError
     case parserError
@@ -19,7 +20,13 @@ protocol UserServices {
     func loadUsers() -> Observable<UserRepoResponse>
 }
 
-class UserRepository: UserServices {
+private enum UserRepoConstants {
+    static let USER_KEY = "local_cached_users"
+}
+
+class UserRemoteRepo: UserServices {
+    private let defaults = UserDefaults.standard
+    
     func loadUsers() -> Observable<UserRepoResponse> {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else {
             return Observable.error(UserRepoError.urlError)
@@ -29,18 +36,41 @@ class UserRepository: UserServices {
             .rx.response(request: URLRequest(url: url))
             .retry(3)
             .observe(on: MainScheduler.instance)
-            .map { (response, data) -> UserRepoResponse in
+            .map { [weak self] (response, data) -> UserRepoResponse in
                 guard 200 ..< 300 ~= response.statusCode else {
                     return .failure(.networkError)
                 }
                 
                 do {
                     let result = try JSONDecoder().decode([User].self, from: data)
+                    self?.defaults.setValue(data, forKey: UserRepoConstants.USER_KEY)
                     return .success(result)
                 }
                 catch {
                     return .failure(.parserError)
                 }
             }
+    }
+}
+
+class UserLocalRepo: UserServices {
+    private let defaults = UserDefaults.standard
+    
+    func loadUsers() -> Observable<UserRepoResponse> {
+        
+        let response: UserRepoResponse
+        do {
+            let users: [User] = try defaults.getObject(forKey: UserRepoConstants.USER_KEY, castTo: [User].self)
+            response = users.isEmpty ? UserRepoResponse.failure(.noLocalData) : UserRepoResponse.success(users)
+        }
+        catch {
+            response = UserRepoResponse.failure(.parserError)
+        }
+        
+        return Observable.create {
+            $0.onNext(response)
+            $0.onCompleted()
+            return Disposables.create()
+        }
     }
 }
