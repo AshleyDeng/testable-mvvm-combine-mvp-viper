@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import SVProgressHUD
 
 class MVVMViewController: UIViewController {
     private let usersViewModel = UsersViewModel(service: UserRepository())
@@ -26,10 +27,10 @@ class MVVMViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(tableView)
         tableView.frame = view.bounds
-        bindTableData()
+        bindViewModel()
     }
     
-    private func bindTableData() {
+    private func bindViewModel() {
         usersViewModel.users.bind(
             to: tableView.rx.items(
                 cellIdentifier: "cell",
@@ -39,10 +40,21 @@ class MVVMViewController: UIViewController {
             cell.detailTextLabel?.text = model.email
         }.disposed(by: bag)
         
-        tableView.rx.modelSelected(User.self).bind { user in
-            print(user.name)
-        }.disposed(by: bag)
+        usersViewModel.isLoading
+            .asDriver()
+            .drive(onNext: { [weak self] isLoading in
+                self?.showLoading(isLoading: isLoading)
+            }).disposed(by: bag)
+        
+        tableView.rx.modelSelected(User.self)
+            .bind { user in
+                print(user.name)
+            }.disposed(by: bag)
         
         usersViewModel.fetchData()
+    }
+    
+    private func showLoading(isLoading: Bool) {
+        isLoading ? SVProgressHUD.show() : SVProgressHUD.dismiss()
     }
 }

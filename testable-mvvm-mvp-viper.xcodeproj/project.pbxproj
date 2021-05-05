@@ -23,6 +23,7 @@
 		C9DCB1F526407ED10015CFE9 /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB1F426407ED10015CFE9 /* CombineViewController.swift */; };
 		C9DCB20F2640A5530015CFE9 /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB20E2640A5530015CFE9 /* UserRepo.swift */; };
 		C9DCB21A2640B3200015CFE9 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB2192640B3200015CFE9 /* UserTableViewCell.swift */; };
+		C9DCB22A2641A7870015CFE9 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB2292641A7870015CFE9 /* ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		C9DCB1F426407ED10015CFE9 /* CombineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 		C9DCB20E2640A5530015CFE9 /* UserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepo.swift; sourceTree = "<group>"; };
 		C9DCB2192640B3200015CFE9 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		C9DCB2292641A7870015CFE9 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		E58C9BB74A12BB7425164F34 /* Pods-testable-mvvm-mvp-viper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testable-mvvm-mvp-viper.release.xcconfig"; path = "Target Support Files/Pods-testable-mvvm-mvp-viper/Pods-testable-mvvm-mvp-viper.release.xcconfig"; sourceTree = "<group>"; };
 		EABFB782EC205BC2F105459D /* Pods-testable-mvvm-mvp-viperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testable-mvvm-mvp-viperTests.debug.xcconfig"; path = "Target Support Files/Pods-testable-mvvm-mvp-viperTests/Pods-testable-mvvm-mvp-viperTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +172,7 @@
 		C927660B263B6F7000CC81AC /* testable-mvvm-mvp-viper */ = {
 			isa = PBXGroup;
 			children = (
+				C9DCB2282641A70A0015CFE9 /* Common */,
 				C995B5AC263CBE1800CAC797 /* Tab */,
 				C906590C263B720500761C64 /* MVVM */,
 				C9DCB1F326407EA90015CFE9 /* Combine */,
@@ -248,6 +251,14 @@
 				C9DCB20E2640A5530015CFE9 /* UserRepo.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		C9DCB2282641A70A0015CFE9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C9DCB2292641A7870015CFE9 /* ActivityIndicator.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,6 +478,7 @@
 				C906591B263B72AB00761C64 /* MVPViewController.swift in Sources */,
 				C9DCB21A2640B3200015CFE9 /* UserTableViewCell.swift in Sources */,
 				C9DCB20F2640A5530015CFE9 /* UserRepo.swift in Sources */,
+				C9DCB22A2641A7870015CFE9 /* ActivityIndicator.swift in Sources */,
 				C9065920263B72B400761C64 /* VIPERViewController.swift in Sources */,
 				C995B5AE263CBE3200CAC797 /* TabBarController.swift in Sources */,
 				C927660D263B6F7000CC81AC /* AppDelegate.swift in Sources */,
@@ -634,7 +646,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8Q28S3U544;
 				INFOPLIST_FILE = "testable-mvvm-mvp-viper/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,7 +667,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8Q28S3U544;
 				INFOPLIST_FILE = "testable-mvvm-mvp-viper/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

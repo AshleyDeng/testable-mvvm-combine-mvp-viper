@@ -6,12 +6,14 @@
 //
 
 import RxSwift
+import RxCocoa
 
 class UsersViewModel {
     private let userRepository: UserServices
     private let bag = DisposeBag()
     
-    var users = PublishSubject<[User]>()
+    let users = PublishSubject<[User]>()
+    let isLoading = ActivityIndicator()
     
     init(service: UserServices) {
         userRepository = service
@@ -20,14 +22,15 @@ class UsersViewModel {
     func fetchData() {
         userRepository
             .loadUsers()
+            .trackActivity(isLoading)
             .subscribe(onNext: handleResponse(_:))
             .disposed(by: bag)
     }
     
     private func handleResponse(_ response: UserRepoResponse) {
         switch response {
-        case .success(let users):
-            self.users.onNext(users)
+        case .success(let data):
+            users.onNext(data)
         case .failure(let error):
             print(error)
         }
