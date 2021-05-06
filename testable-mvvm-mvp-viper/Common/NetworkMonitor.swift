@@ -8,22 +8,23 @@
 import Foundation
 import Network
 import RxSwift
+import RxCocoa
 
 protocol NetworkDetectable {
-    var isOnline: PublishSubject<Bool> { get }
+    var isOnline: BehaviorRelay<Bool> { get }
 }
 
 class NetworkMonitor: NetworkDetectable {
-    var isOnline = PublishSubject<Bool>()
+    var isOnline = BehaviorRelay<Bool>(value: true)
     private let monitor = NWPathMonitor()
     
     init() {
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
-                self.isOnline.onNext(true)
+                self.isOnline.accept(true)
                 print("We're connected!")
             } else {
-                self.isOnline.onNext(false)
+                self.isOnline.accept(false)
                 print("No connection.")
             }
         }

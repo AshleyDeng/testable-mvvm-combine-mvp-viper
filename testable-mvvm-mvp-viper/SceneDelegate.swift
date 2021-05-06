@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import SVProgressHUD
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -24,7 +25,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
+        SVProgressHUD.setDefaultStyle(.dark)
+        
         networkMonitor.isOnline
+            .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
             .take(1)
             .subscribe(onNext: { [weak self] isOnline in
@@ -33,9 +37,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }).disposed(by: bag)
         
         networkMonitor.isOnline
+            .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { isOnline in
-                UINavigationBar.appearance().backgroundColor = isOnline ? .white : .red
+                if !isOnline {
+                    SVProgressHUD.showInfo(withStatus: "No Connection")
+                }
             }).disposed(by: bag)
         
         (UIApplication.shared.delegate as? AppDelegate)?.window = window
