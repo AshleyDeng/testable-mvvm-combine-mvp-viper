@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    private var networkMonitor: NetworkDetectable = NetworkMonitor()
+    private let bag = DisposeBag()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -20,8 +23,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UINavigationBar.appearance().prefersLargeTitles = true
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = TabBarController()
-        window?.makeKeyAndVisible()
+        
+        networkMonitor.isOnline
+            .observe(on: MainScheduler.instance)
+            .take(1)
+            .subscribe(onNext: { [weak self] isOnline in
+                self?.window?.rootViewController = TabBarController(isOnline: isOnline)
+                self?.window?.makeKeyAndVisible()
+            }).disposed(by: bag)
+        
+        networkMonitor.isOnline
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { isOnline in
+                UINavigationBar.appearance().backgroundColor = isOnline ? .white : .red
+            }).disposed(by: bag)
         
         (UIApplication.shared.delegate as? AppDelegate)?.window = window
     }

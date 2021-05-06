@@ -25,6 +25,7 @@
 		C9DCB21A2640B3200015CFE9 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB2192640B3200015CFE9 /* UserTableViewCell.swift */; };
 		C9DCB22A2641A7870015CFE9 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB2292641A7870015CFE9 /* ActivityIndicator.swift */; };
 		C9EEC29F26434C6000A9321F /* UserDefaults+ObjectSavable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EEC29E26434C6000A9321F /* UserDefaults+ObjectSavable.swift */; };
+		C9EEC2A426435F6000A9321F /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EEC2A326435F6000A9321F /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		C9DCB2192640B3200015CFE9 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		C9DCB2292641A7870015CFE9 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C9EEC29E26434C6000A9321F /* UserDefaults+ObjectSavable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+ObjectSavable.swift"; sourceTree = "<group>"; };
+		C9EEC2A326435F6000A9321F /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		E58C9BB74A12BB7425164F34 /* Pods-testable-mvvm-mvp-viper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testable-mvvm-mvp-viper.release.xcconfig"; path = "Target Support Files/Pods-testable-mvvm-mvp-viper/Pods-testable-mvvm-mvp-viper.release.xcconfig"; sourceTree = "<group>"; };
 		EABFB782EC205BC2F105459D /* Pods-testable-mvvm-mvp-viperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testable-mvvm-mvp-viperTests.debug.xcconfig"; path = "Target Support Files/Pods-testable-mvvm-mvp-viperTests/Pods-testable-mvvm-mvp-viperTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				C9DCB2292641A7870015CFE9 /* ActivityIndicator.swift */,
+				C9EEC2A326435F6000A9321F /* NetworkMonitor.swift */,
 				C9EEC29E26434C6000A9321F /* UserDefaults+ObjectSavable.swift */,
 			);
 			path = Common;
@@ -490,6 +493,7 @@
 				C927660F263B6F7000CC81AC /* SceneDelegate.swift in Sources */,
 				C9DCB1F526407ED10015CFE9 /* CombineViewController.swift in Sources */,
 				C9DCB1EA263E3C010015CFE9 /* User.swift in Sources */,
+				C9EEC2A426435F6000A9321F /* NetworkMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

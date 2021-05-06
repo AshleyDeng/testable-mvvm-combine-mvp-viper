@@ -11,7 +11,7 @@ import RxSwift
 import SVProgressHUD
 
 class MVVMViewController: UIViewController {
-    private let userViewModel = UserViewModel(service: UserRemoteRepo())
+    private var userViewModel: UserViewModel
     private let bag = DisposeBag()
     
     private let tableView: UITableView = {
@@ -22,6 +22,15 @@ class MVVMViewController: UIViewController {
         )
         return table
     }()
+    
+    init(viewModel: UserViewModel) {
+        userViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

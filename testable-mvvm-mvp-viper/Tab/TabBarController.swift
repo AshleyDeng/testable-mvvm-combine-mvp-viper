@@ -6,12 +6,30 @@
 //
 
 import UIKit
+import RxSwift
 
 class TabBarController: UITabBarController {
+    
+    var isOnline: Bool = true
+    
+    init(isOnline: Bool) {
+        self.isOnline = isOnline
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViewControllers()
+    }
+    
+    private func setupViewControllers() {
+        let userViewModel = isOnline ? UserViewModel(service: UserRemoteRepo()) : UserViewModel(service: UserLocalRepo())
         
-        let mvvmNav = getNavController(MVVMViewController(), title: "MVVM", image: UIImage(systemName: "tram.tunnel.fill")!)
+        let mvvmNav = getNavController(MVVMViewController(viewModel: userViewModel), title: "MVVM", image: UIImage(systemName: "tram.tunnel.fill")!)
         let combineNav = getNavController(CombineViewController(), title: "Combine", image: UIImage(systemName: "arrow.triangle.merge")!)
         let mvpNav = getNavController(MVPViewController(), title: "MVP", image: UIImage(systemName: "gamecontroller.fill")!)
         let viperNav = getNavController(VIPERViewController(), title: "VIPER", image: UIImage(systemName: "bonjour")!)
