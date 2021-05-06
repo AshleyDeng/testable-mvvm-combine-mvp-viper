@@ -34,36 +34,59 @@ class MVVMViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(tableView)
-        tableView.frame = view.bounds
+        
+        setupUI()
         bindViewModel()
     }
+}
+
+//MARK: - UI
+extension MVVMViewController {
+    private func setupUI() {
+        view.addSubview(tableView)
+        tableView.frame = view.bounds
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Load Data", style: .plain, target: self, action: #selector(loadData))
+    }
     
+    private func showLoading(isLoading: Bool) {
+        isLoading ? SVProgressHUD.show() : SVProgressHUD.dismiss()
+    }
+}
+
+//MARK: Actions
+extension MVVMViewController {
+    @objc private func loadData() {
+        userViewModel.fetchData()
+    }
+}
+
+//MARK: - MVVM
+extension MVVMViewController {
     private func bindViewModel() {
-        userViewModel.users.bind(
-            to: tableView.rx.items(
-                cellIdentifier: "cell",
-                cellType: UserTableViewCell.self)
-        ) { row, model, cell in
-            cell.textLabel?.text = model.name
-            cell.detailTextLabel?.text = model.email
-        }.disposed(by: bag)
-        
         userViewModel.isLoading
             .asDriver()
             .drive(onNext: { [weak self] isLoading in
                 self?.showLoading(isLoading: isLoading)
             }).disposed(by: bag)
         
+        userViewModel.users
+            .bind(to: tableView.rx.items(
+                    cellIdentifier: "cell",
+                    cellType: UserTableViewCell.self)
+            ) { row, model, cell in
+                cell.textLabel?.text = model.name
+                cell.detailTextLabel?.text = model.email
+            }.disposed(by: bag)
+        
+        userViewModel.users
+            .subscribe(on: MainScheduler.instance)
+            .subscribe(onError: {
+                SVProgressHUD.show(withStatus: $0.localizedDescription)
+            }).disposed(by: bag)
+        
         tableView.rx.modelSelected(User.self)
             .bind { user in
                 print(user.name)
             }.disposed(by: bag)
-        
-        userViewModel.fetchData()
-    }
-    
-    private func showLoading(isLoading: Bool) {
-        isLoading ? SVProgressHUD.show() : SVProgressHUD.dismiss()
     }
 }
