@@ -11,7 +11,7 @@ import RxSwift
 import SVProgressHUD
 
 class MVVMViewController: UIViewController {
-    private var userViewModel: UsersViewModel
+    private var usersViewModel: UsersViewModel
     private let bag = DisposeBag()
     
     private let tableView: UITableView = {
@@ -24,7 +24,7 @@ class MVVMViewController: UIViewController {
     }()
     
     init(viewModel: UsersViewModel) {
-        userViewModel = viewModel
+        usersViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -52,7 +52,7 @@ extension MVVMViewController {
 //MARK: Actions
 extension MVVMViewController {
     @objc private func loadData() {
-        userViewModel.fetchData()
+        usersViewModel.fetchData()
     }
 }
 
@@ -60,7 +60,7 @@ extension MVVMViewController {
 extension MVVMViewController {
     private func bindViewModel() {
         
-        userViewModel.users
+        usersViewModel.users
             .bind(to: tableView.rx.items(
                     cellIdentifier: "cell",
                     cellType: UserTableViewCell.self)
@@ -73,13 +73,13 @@ extension MVVMViewController {
                 print(user.name)
             }.disposed(by: bag)
         
-        userViewModel.isLoading.asObservable()
+        usersViewModel.isLoading.asObservable()
             .asDriver(onErrorJustReturn: false)
             .drive(onNext: { isLoading in
                 isLoading ? SVProgressHUD.show() : SVProgressHUD.dismiss()
             }).disposed(by: bag)
         
-        userViewModel.error
+        usersViewModel.error
             .asDriver(onErrorJustReturn: "")
             .drive(onNext: { error in
                 guard !error.isEmpty else { return }

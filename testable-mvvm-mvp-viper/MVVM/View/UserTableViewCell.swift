@@ -9,6 +9,8 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
     
+    private var viewModel: UserFollowViewModel?
+    
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
@@ -33,6 +35,16 @@ class UserTableViewCell: UITableViewCell {
         contentView.addSubview(emailLabel)
         contentView.addSubview(followButton)
         contentView.clipsToBounds = true
+        
+        followButton.addTarget(self, action: #selector(didTapFollow), for: .touchUpInside)
+    }
+    
+    @objc func didTapFollow() {
+        guard var viewModel = viewModel else { return }
+        
+        viewModel.following.toggle()
+        prepareForReuse()
+        configure(with: viewModel)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,9 +72,15 @@ class UserTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         nameLabel.text = nil
         emailLabel.text = nil
+        followButton.setTitle(nil, for: .normal)
+        followButton.setTitleColor(nil, for: .normal)
+        followButton.layer.borderWidth = 0
+        followButton.layer.borderColor = nil
+        followButton.backgroundColor = nil
     }
     
     func configure(with viewModel: UserFollowViewModel) {
+        self.viewModel = viewModel
         nameLabel.text = viewModel.name
         emailLabel.text = viewModel.email
         
