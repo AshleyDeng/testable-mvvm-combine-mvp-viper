@@ -27,7 +27,7 @@ class TabBarController: UITabBarController {
     }
     
     private func setupViewControllers() {
-        let userViewModel = isOnline ? UserViewModel(service: UserRemoteRepo()) : UserViewModel(service: UserLocalRepo())
+        let userViewModel = isOnline ? UsersViewModel(service: UserRemoteRepo()) : UsersViewModel(service: UserLocalRepo())
         
         let mvvmNav = getNavController(MVVMViewController(viewModel: userViewModel), title: "MVVM", image: UIImage(systemName: "tram.tunnel.fill")!)
         let combineNav = getNavController(CombineViewController(), title: "Combine", image: UIImage(systemName: "arrow.triangle.merge")!)

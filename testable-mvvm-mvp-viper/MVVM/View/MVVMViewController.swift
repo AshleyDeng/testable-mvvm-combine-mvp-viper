@@ -11,7 +11,7 @@ import RxSwift
 import SVProgressHUD
 
 class MVVMViewController: UIViewController {
-    private var userViewModel: UserViewModel
+    private var userViewModel: UsersViewModel
     private let bag = DisposeBag()
     
     private let tableView: UITableView = {
@@ -23,7 +23,7 @@ class MVVMViewController: UIViewController {
         return table
     }()
     
-    init(viewModel: UserViewModel) {
+    init(viewModel: UsersViewModel) {
         userViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -65,8 +65,7 @@ extension MVVMViewController {
                     cellIdentifier: "cell",
                     cellType: UserTableViewCell.self)
             ) { row, model, cell in
-                cell.textLabel?.text = model.name
-                cell.detailTextLabel?.text = model.email
+                cell.configure(with: UserFollowViewModel(with: model))
             }.disposed(by: bag)
         
         tableView.rx.modelSelected(User.self)

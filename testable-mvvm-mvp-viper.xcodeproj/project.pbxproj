@@ -17,9 +17,10 @@
 		C9276616263B6F7000CC81AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9276615263B6F7000CC81AC /* Assets.xcassets */; };
 		C9276624263B6F7100CC81AC /* testable_mvvm_mvp_viperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9276623263B6F7100CC81AC /* testable_mvvm_mvp_viperTests.swift */; };
 		C927662F263B6F7100CC81AC /* testable_mvvm_mvp_viperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C927662E263B6F7100CC81AC /* testable_mvvm_mvp_viperUITests.swift */; };
+		C94AD99D2645F25B00E2E229 /* UserFollowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AD99C2645F25B00E2E229 /* UserFollowViewModel.swift */; };
 		C995B5AE263CBE3200CAC797 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C995B5AD263CBE3200CAC797 /* TabBarController.swift */; };
 		C9DCB1EA263E3C010015CFE9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB1E9263E3C010015CFE9 /* User.swift */; };
-		C9DCB1EF263E43360015CFE9 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB1EE263E43360015CFE9 /* UserViewModel.swift */; };
+		C9DCB1EF263E43360015CFE9 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB1EE263E43360015CFE9 /* UsersViewModel.swift */; };
 		C9DCB1F526407ED10015CFE9 /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB1F426407ED10015CFE9 /* CombineViewController.swift */; };
 		C9DCB20F2640A5530015CFE9 /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB20E2640A5530015CFE9 /* UserRepo.swift */; };
 		C9DCB21A2640B3200015CFE9 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DCB2192640B3200015CFE9 /* UserTableViewCell.swift */; };
@@ -64,9 +65,10 @@
 		C927662A263B6F7100CC81AC /* testable-mvvm-mvp-viperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "testable-mvvm-mvp-viperUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C927662E263B6F7100CC81AC /* testable_mvvm_mvp_viperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testable_mvvm_mvp_viperUITests.swift; sourceTree = "<group>"; };
 		C9276630263B6F7100CC81AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C94AD99C2645F25B00E2E229 /* UserFollowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowViewModel.swift; sourceTree = "<group>"; };
 		C995B5AD263CBE3200CAC797 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C9DCB1E9263E3C010015CFE9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		C9DCB1EE263E43360015CFE9 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		C9DCB1EE263E43360015CFE9 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		C9DCB1F426407ED10015CFE9 /* CombineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 		C9DCB20E2640A5530015CFE9 /* UserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepo.swift; sourceTree = "<group>"; };
 		C9DCB2192640B3200015CFE9 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -228,7 +230,8 @@
 		C995B5C0263E2F7F00CAC797 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C9DCB1EE263E43360015CFE9 /* UserViewModel.swift */,
+				C9DCB1EE263E43360015CFE9 /* UsersViewModel.swift */,
+				C94AD99C2645F25B00E2E229 /* UserFollowViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -489,7 +492,8 @@
 				C9EEC29F26434C6000A9321F /* UserDefaults+ObjectSavable.swift in Sources */,
 				C995B5AE263CBE3200CAC797 /* TabBarController.swift in Sources */,
 				C927660D263B6F7000CC81AC /* AppDelegate.swift in Sources */,
-				C9DCB1EF263E43360015CFE9 /* UserViewModel.swift in Sources */,
+				C94AD99D2645F25B00E2E229 /* UserFollowViewModel.swift in Sources */,
+				C9DCB1EF263E43360015CFE9 /* UsersViewModel.swift in Sources */,
 				C927660F263B6F7000CC81AC /* SceneDelegate.swift in Sources */,
 				C9DCB1F526407ED10015CFE9 /* CombineViewController.swift in Sources */,
 				C9DCB1EA263E3C010015CFE9 /* User.swift in Sources */,
