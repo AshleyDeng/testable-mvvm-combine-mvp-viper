@@ -74,16 +74,19 @@ extension MVVMViewController {
                 print(user.name)
             }.disposed(by: bag)
         
-        Observable.combineLatest(
-                userViewModel.isLoading.asObservable(),
-                userViewModel.error
-        ).asDriver(onErrorJustReturn: (false, ""))
-        .drive(onNext: { (isLoading, error) in
-            if !error.isEmpty {
-                SVProgressHUD.showError(withStatus: error)
-            } else {
+        userViewModel.isLoading.asObservable()
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { isLoading in
                 isLoading ? SVProgressHUD.show() : SVProgressHUD.dismiss()
-            }
-        }).disposed(by: bag)
+            }).disposed(by: bag)
+        
+        userViewModel.error
+            .asDriver(onErrorJustReturn: "")
+            .drive(onNext: { error in
+                guard !error.isEmpty else { return }
+                let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }).disposed(by: bag)
     }
 }
