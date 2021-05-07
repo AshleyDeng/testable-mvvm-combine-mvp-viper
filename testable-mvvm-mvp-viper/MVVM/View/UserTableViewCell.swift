@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol UserFollowDelegate: AnyObject {
+    func didFollowUser(with viewModel: UserFollowViewModel)
+}
+
 class UserTableViewCell: UITableViewCell {
     
     private var viewModel: UserFollowViewModel?
+    weak var delegate: UserFollowDelegate?
     
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -43,6 +48,7 @@ class UserTableViewCell: UITableViewCell {
         guard var viewModel = viewModel else { return }
         
         viewModel.following.toggle()
+        delegate?.didFollowUser(with: viewModel)
         prepareForReuse()
         configure(with: viewModel)
     }
@@ -81,8 +87,8 @@ class UserTableViewCell: UITableViewCell {
     
     func configure(with viewModel: UserFollowViewModel) {
         self.viewModel = viewModel
-        nameLabel.text = viewModel.name
-        emailLabel.text = viewModel.email
+        nameLabel.text = viewModel.user.name
+        emailLabel.text = viewModel.user.email
         
         if viewModel.following {
             followButton.setTitle("Unfollow", for: .normal)

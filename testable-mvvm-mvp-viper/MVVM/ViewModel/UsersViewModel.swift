@@ -29,6 +29,15 @@ class UsersViewModel {
             ).disposed(by: bag)
     }
     
+    func followUser(with id: Int) {
+        userRepository
+            .followUser(with: id)
+            .trackActivity(isLoading)
+            .subscribe(
+                onError: handleError(_:)
+            ).disposed(by: bag)
+    }
+    
     private func handleResponse(_ response: UserRepoResponse) {
         switch response {
         case .success(let data):

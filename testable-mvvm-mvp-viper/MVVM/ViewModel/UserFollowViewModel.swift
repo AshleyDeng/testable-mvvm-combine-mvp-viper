@@ -8,13 +8,11 @@
 import Foundation
 
 struct UserFollowViewModel {
-    let name: String
-    let email: String
+    let user: User
     var following: Bool
     
     init(with model: User) {
-        name = model.name
-        email = model.email
+        user = model
         following = false
     }
 }

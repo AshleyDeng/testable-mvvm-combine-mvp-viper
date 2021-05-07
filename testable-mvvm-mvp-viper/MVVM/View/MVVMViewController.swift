@@ -50,9 +50,13 @@ extension MVVMViewController {
 }
 
 //MARK: Actions
-extension MVVMViewController {
+extension MVVMViewController: UserFollowDelegate {
     @objc private func loadData() {
         usersViewModel.fetchData()
+    }
+    
+    func didFollowUser(with viewModel: UserFollowViewModel) {
+        usersViewModel.followUser(with: viewModel.user.id)
     }
 }
 
@@ -66,6 +70,7 @@ extension MVVMViewController {
                     cellType: UserTableViewCell.self)
             ) { row, model, cell in
                 cell.configure(with: UserFollowViewModel(with: model))
+                cell.delegate = self
             }.disposed(by: bag)
         
         tableView.rx.modelSelected(User.self)

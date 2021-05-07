@@ -15,9 +15,11 @@ enum UserRepoError: Error {
 }
 
 typealias UserRepoResponse = Result<[User], UserRepoError>
+typealias UserFollowResponse = Result<Bool, UserRepoError>
 
 protocol UserServices {
     func loadUsers() -> Observable<UserRepoResponse>
+    func followUser(with id: Int) -> Observable<UserFollowResponse>
 }
 
 private enum UserRepoConstants {
@@ -51,6 +53,17 @@ class UserRemoteRepo: UserServices {
                 }
             }
     }
+    
+    func followUser(with id: Int) -> Observable<UserFollowResponse> {
+        return Observable.create { observer in
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                observer.onNext(.success(true))
+                observer.onCompleted()
+            }
+            
+            return Disposables.create()
+        }
+    }
 }
 
 class UserLocalRepo: UserServices {
@@ -70,6 +83,17 @@ class UserLocalRepo: UserServices {
         return Observable.create {
             $0.onNext(response)
             $0.onCompleted()
+            return Disposables.create()
+        }
+    }
+    
+    func followUser(with id: Int) -> Observable<UserFollowResponse> {
+        return Observable.create { observer in
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                observer.onNext(.success(false))
+                observer.onCompleted()
+            }
+            
             return Disposables.create()
         }
     }
