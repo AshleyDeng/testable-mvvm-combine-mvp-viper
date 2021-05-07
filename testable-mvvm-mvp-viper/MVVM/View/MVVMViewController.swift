@@ -47,10 +47,6 @@ extension MVVMViewController {
         tableView.frame = view.bounds
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Load Data", style: .plain, target: self, action: #selector(loadData))
     }
-    
-    private func showLoading(isLoading: Bool) {
-        isLoading ? SVProgressHUD.show() : SVProgressHUD.dismiss()
-    }
 }
 
 //MARK: Actions
@@ -63,11 +59,6 @@ extension MVVMViewController {
 //MARK: - MVVM
 extension MVVMViewController {
     private func bindViewModel() {
-        userViewModel.isLoading
-            .asDriver()
-            .drive(onNext: { [weak self] isLoading in
-                self?.showLoading(isLoading: isLoading)
-            }).disposed(by: bag)
         
         userViewModel.users
             .bind(to: tableView.rx.items(
@@ -78,15 +69,21 @@ extension MVVMViewController {
                 cell.detailTextLabel?.text = model.email
             }.disposed(by: bag)
         
-        userViewModel.users
-            .subscribe(on: MainScheduler.instance)
-            .subscribe(onError: {
-                SVProgressHUD.show(withStatus: $0.localizedDescription)
-            }).disposed(by: bag)
-        
         tableView.rx.modelSelected(User.self)
             .bind { user in
                 print(user.name)
             }.disposed(by: bag)
+        
+        Observable.combineLatest(
+                userViewModel.isLoading.asObservable(),
+                userViewModel.error
+        ).asDriver(onErrorJustReturn: (false, ""))
+        .drive(onNext: { (isLoading, error) in
+            if !error.isEmpty {
+                SVProgressHUD.showError(withStatus: error)
+            } else {
+                isLoading ? SVProgressHUD.show() : SVProgressHUD.dismiss()
+            }
+        }).disposed(by: bag)
     }
 }
