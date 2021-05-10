@@ -15,7 +15,7 @@ class UsersViewModel {
     let error = PublishSubject<String>()
     let isLoading = ActivityIndicator()
     
-    init(service: UserServices) {
+    init(service: UserServices = UserRemoteRepo()) {
         userRepository = service
     }
     
