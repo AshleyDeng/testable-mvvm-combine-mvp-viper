@@ -7,7 +7,7 @@
 
 import RxSwift
 
-class UsersViewModel {
+struct UsersViewModel {
     private let userRepository: UserServices
     private let bag = DisposeBag()
     
